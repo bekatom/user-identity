@@ -1,0 +1,42 @@
+include ../../../views/mixins/messages.pug
+
+style.
+    form {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    input {
+        padding: 10px;
+        margin: 10px;
+        width:100%;
+        font-size: 14px;
+    }
+    button {
+        font-size:14px;
+        padding:10px;
+        margin:10px;
+    }
+
+div.user-login
+    +displayValidation(errors)
+    form(action='/login' method='post')
+        fieldset
+            legend User Login 
+            div
+                input(type='email', name='email', placeholder='email')
+            div    
+                input(type='password', name='password', placeholder='password')
+            div    
+                button(type='submit') Submit
+                a(href='/auth/facebook' id='facebook-login')
+                    button(type='button') Facebook
+                
+                a(href='/auth/twitter' id='twitter-login')
+                    button(type='button') Twitter
+
+                a(href='/auth/linkdin' id='linkdin-login')
+                    button(type='button') Linkdin
+
+                a(href='/auth/google' id='google-login')
+                    button(type='button') Google

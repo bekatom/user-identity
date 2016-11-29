@@ -1,0 +1,31 @@
+include ../../../views/mixins/messages.pug
+
+style.
+    form {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    input {
+        padding: 10px;
+        margin: 10px;
+        width:100%;
+        font-size: 14px;
+    }
+    button {
+        font-size:14px;
+        padding:10px;
+        margin:10px;
+    }
+
+div.user-login
+    +displayValidation(errors)
+    form(action='/autneticate' method='post')
+        fieldset
+        legend Login with Token
+            div
+                input(type='email', name='email', placeholder='email')
+            div    
+                input(type='password', name='password', placeholder='password')
+            div    
+                button(type='submit') Submit
