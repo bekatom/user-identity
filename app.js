@@ -6,7 +6,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var helmet = require('helmet');
-var Memcached = require('memcached');
+// var Memcached = require('memcached');
 var compression = require('compression');
 var config = require('./config');
 var flash  = require('connect-flash');
@@ -30,10 +30,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //app.set('view engine', 'swig');
 app.set('view engine', 'pug');
-app.locals.Sequelize = require("sequelize");
-var memcached = new Memcached(config.MEMCACHED);
+//app.locals.Sequelize = require("sequelize");
+// var memcached = new Memcached(config.MEMCACHED);
 app.use(function(req, res, next) {
-    global.memcached = memcached;
+   // global.memcached = memcached;
     next();
 });
 
