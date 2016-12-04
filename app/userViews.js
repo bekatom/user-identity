@@ -1,4 +1,5 @@
-var models = require('../../models');
+// var models = require('../../models');
+
 var debug = require('debug')('api');
 var path = require('path');
 var Memcached = require('../memcached');

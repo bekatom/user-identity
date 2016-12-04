@@ -2,8 +2,9 @@ var UserController = require('./index').UserController;
 var UserViews = require('./index').UserViews;
 var isLoggedIn = require('./index').isLoggedIn;
 var isAuthenticated = require('./index').isAuthenticated;
-var models = require('../../models');
-var crudController  = require('../../core/crudController')(models.users);
+// var models = require('../../models');
+// var crudController  = require('../../core/crudController')(models.users);
+
 
 
 module.exports = {
@@ -121,19 +122,19 @@ module.exports = {
 
         // CRUD
         '/list' : {
-            get : crudController.list
+           // get : crudController.list
         },
         
         '/create' : {
-            post : crudController.create
+          //  post : crudController.create
         },
 
         '/delete' : {
-            delete : crudController.delete
+           // delete : crudController.delete
         },
 
         '/read' : {
-            get : crudController.read
+           // get : crudController.read
         }
 
 

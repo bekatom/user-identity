@@ -5,9 +5,9 @@ var async = require('async');
 var debug = require('debug')('api');
 var jwt = require('jsonwebtoken');
 
-var models = require('../../models');
-var Memcached = require('../memcached');
-var memCachedKeys = Memcached.memCachedKeys;
+// var models = require('../../models');
+// var Memcached = require('../memcached');
+// var memCachedKeys = Memcached.memCachedKeys;
 
 var LSCrypt = require('../../helpers/crypt').LSCrypt;
 var util = require('../../helpers/util');
@@ -23,16 +23,16 @@ var UserStore = {
 
         return new Promise((resolve, reject)=>{
 
-            models.users.findOne({
+            // models.users.findOne({
 
-                where: {
-                    user_id: user_id
-                },
-                raw : true
-            }).then(result =>{
-                // TODO: Echo result only if API authorisation passed
-                resolve(result);
-            })
+            //     where: {
+            //         user_id: user_id
+            //     },
+            //     raw : true
+            // }).then(result =>{
+            //     // TODO: Echo result only if API authorisation passed
+            //     resolve(result);
+            // })
 
         })
 
@@ -44,30 +44,30 @@ var UserStore = {
 
         return new Promise((resolve, reject)=>{
 
-            Memcached.controller.get_cached(memCachedKeys["featured_authors"].key).then(data=>{
-                resolve(data);
+            // Memcached.controller.get_cached(memCachedKeys["featured_authors"].key).then(data=>{
+            //     resolve(data);
 
-            }).catch(err=>{
+            // }).catch(err=>{
 
-                models.users.findAll({
-                    attributes: UserStore._columns,
-                    where: {
-                        status: "activate",
-                        featured_author: "true"
-                    }, order: [["user_id", "ASC"]]
-                    , offset: 0, limit: 4,
-                    raw : true
-                }).then(result=>{
+            //     models.users.findAll({
+            //         attributes: UserStore._columns,
+            //         where: {
+            //             status: "activate",
+            //             featured_author: "true"
+            //         }, order: [["user_id", "ASC"]]
+            //         , offset: 0, limit: 4,
+            //         raw : true
+            //     }).then(result=>{
 
-                    Memcached.controller.set_cached_data(memCachedKeys["featured_authors"].key,
-                        result,
-                        memCachedKeys["featured_authors"].time
-                    );
-                    resolve(result);
+            //         Memcached.controller.set_cached_data(memCachedKeys["featured_authors"].key,
+            //             result,
+            //             memCachedKeys["featured_authors"].time
+            //         );
+            //         resolve(result);
 
-                })
+            //     })
 
-            });
+            // });
 
         });
     },
@@ -75,26 +75,26 @@ var UserStore = {
     count: ()=>{
 
         return new Promise((resolve,reject)=>{
-            Memcached.controller.get_cached(memCachedKeys["users_count"].key).then(data=>{
-                resolve(data);
-            }).catch(e=>{
+            // Memcached.controller.get_cached(memCachedKeys["users_count"].key).then(data=>{
+            //     resolve(data);
+            // }).catch(e=>{
 
-                models.users.count({
-                    where: {
-                        $or: [
-                            { status: "activate" }, { status: "waiting" }
-                        ]
-                    }
-                }).then(data=>{
+            //     models.users.count({
+            //         where: {
+            //             $or: [
+            //                 { status: "activate" }, { status: "waiting" }
+            //             ]
+            //         }
+            //     }).then(data=>{
 
-                    Memcached.controller.set_cached_data(memCachedKeys["users_count"].key,
-                        data,
-                        memCachedKeys["users_count"].time
-                    );
-                    resolve(data);
-                })
+            //         Memcached.controller.set_cached_data(memCachedKeys["users_count"].key,
+            //             data,
+            //             memCachedKeys["users_count"].time
+            //         );
+            //         resolve(data);
+            //     })
 
-            });
+            // });
 
         })
 
@@ -117,28 +117,28 @@ user_authenticate = (req, res)=>{
             res.ok({success: false, message: 'Authentication failed. User not found.' })
         debug("user authenticate :", user);
         // authenticate
-        models.users.findOne({
-            where : {
-                email: LSCrypt.getEmail(req.body.email),
-                password: LSCrypt.getPassword(req.body.password,user.salt)
-            },
-            raw : true
-        }).then(user =>{
-            if(!user)
-                res.ok({success: false, message: 'Oops! Wrong password.' });
+        // models.users.findOne({
+        //     where : {
+        //         email: LSCrypt.getEmail(req.body.email),
+        //         password: LSCrypt.getPassword(req.body.password,user.salt)
+        //     },
+        //     raw : true
+        // }).then(user =>{
+        //     if(!user)
+        //         res.ok({success: false, message: 'Oops! Wrong password.' });
 
-            //TODO secret key from app config
-            var token = jwt.sign(user, JWT_SECRET_KEY , {
-                expiresInMinutes: 1440 // expires in 24 hours
-            });
+        //     //TODO secret key from app config
+        //     var token = jwt.sign(user, JWT_SECRET_KEY , {
+        //         expiresInMinutes: 1440 // expires in 24 hours
+        //     });
 
-            //return done(null, user);
-            res.ok({success : true,message : 'Enjoy your token', token : token})
+        //     //return done(null, user);
+        //     res.ok({success : true,message : 'Enjoy your token', token : token})
 
-        }).catch(err=>{
-            log.info(err);
-            res.badRequest({success: false, message: 'Oops Somethis goes wrong!!!.' });
-        });
+        // }).catch(err=>{
+        //     log.info(err);
+        //     res.badRequest({success: false, message: 'Oops Somethis goes wrong!!!.' });
+        // });
 
 
     }).catch(err=>{
@@ -189,21 +189,21 @@ update_payout = (req, res)=>{
             // get user info and walidate total field ß
             var where = { where: { user_id: user_id } };
 
-            models.users.findOne(where).then(data=>{
+            // models.users.findOne(where).then(data=>{
 
 
-                if (payout > data.dataValues.total)
-                    done(true, "Payout is > total !!! ");
-                else {
-                    done(null, data)
-                }
+            //     if (payout > data.dataValues.total)
+            //         done(true, "Payout is > total !!! ");
+            //     else {
+            //         done(null, data)
+            //     }
 
 
-            }).catch(err=>{
+            // }).catch(err=>{
 
-                log.info(err,req);
-                done(true, "User not found , or strange query!")
-            })
+            //     log.info(err,req);
+            //     done(true, "User not found , or strange query!")
+            // })
 
         }, // update user info
         function (data, done) {
@@ -212,13 +212,13 @@ update_payout = (req, res)=>{
 
             var values = { total: user.total - payout };
             var where = { where: { user_id: user.user_id } };
-            models.users.update(values, where).then(data=>{
-                done(null, data);
-            }).catch(err=>{
-                // error true
-                log.info({err,req});
-                done(true, "Exception in update user , or strange query!")
-            })
+            // models.users.update(values, where).then(data=>{
+            //     done(null, data);
+            // }).catch(err=>{
+            //     // error true
+            //     log.info({err,req});
+            //     done(true, "Exception in update user , or strange query!")
+            // })
 
         }, // update withdraw table
         function (data, done) {
@@ -226,13 +226,13 @@ update_payout = (req, res)=>{
             var values = { paid: "true", paid_datetime: new Date() },
                 where = { where: { id: withdraw_id } };
 
-            models.withdraw.update(values, where).then(data=>{
-                done(null, data);
-            }).catch(err=>{
-                // error true
-                log.info({err,req});
-                done(true, err);
-            })
+            // models.withdraw.update(values, where).then(data=>{
+            //     done(null, data);
+            // }).catch(err=>{
+            //     // error true
+            //     log.info({err,req});
+            //     done(true, err);
+            // })
         },
         // Create user_tax state
         function (data, done) {
@@ -246,13 +246,13 @@ update_payout = (req, res)=>{
                 user_id: user_id
             };
 
-            models.users_tax.create(obj).then(data=>{
-                done(null, data)
-            }).catch(err=>{
+            // models.users_tax.create(obj).then(data=>{
+            //     done(null, data)
+            // }).catch(err=>{
 
-                log.info(err,req);
-                done(true, err)
-            })
+            //     log.info(err,req);
+            //     done(true, err)
+            // })
 
         }
 
