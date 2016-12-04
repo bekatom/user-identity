@@ -1,0 +1,44 @@
+{
+  "development": {
+
+    "api_port"  : 4000,
+    "api_host" : "http://127.0.0.1:4000",
+    "MEMCACHED" : "dev.luckstock.com:11211",
+    "debug" : true,
+    "username": "root",
+    "password": "qwerty",
+    "database": "audiostock",
+    "host": "dev.luckstock.com",
+    "dialect": "mysql",
+    "cdn_static": "//dev.luckstock.com",
+    "JWT_SECRET_KEY": "JWTluckstocksecretkey!!!$$$"
+  },
+  "test": {
+
+    "api_port"  : 4000,
+    "api_host" : "//127.0.0.1:4000",
+    "MEMCACHED" : "localhost:11211",
+    "debug" : true,
+    "username": "audiostock",
+    "password": "universtock-DB",
+    "database": "audiostock",
+    "host": "localhost",
+    "dialect": "mysql",
+    "cdn_static": "//dev.luckstock.com",
+    "JWT_SECRET_KEY": "JWTluckstocksecretkey!!!$$$"
+  },
+  "production": {
+
+    "api_port"  : 4000,
+    "api_host" : "//127.0.0.1:4000",
+    "MEMCACHED" : "dev.luckstock.com:11211",
+    "debug" : false,
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "cdn_static": "//ls.azureedge.net",
+    "JWT_SECRET_KEY": ""
+  }
+}
