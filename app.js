@@ -40,8 +40,8 @@ app.use(function(req, res, next) {
 
 // ==============
 // Create passport instance && JWT
+// app.set('superSecret', "ThisislucstocksecretKeyforJWT");
 
-//app.set('superSecret', "ThisislucstocksecretKeyforJWT");
 var passport = require("passport");
 require('./apps/users/passport')(passport); // pass passport for configuration
 
@@ -66,7 +66,6 @@ app.use(passport.session()); // persistent login sessions
 global.passport = passport;
 app.use(flash()); // use connect-flash for flash messages stored in session
 ////// ====== END OF PASSPORT
-
 app.use(compression());
 app.use(cors());
 app.use(helmet());
@@ -75,9 +74,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
-//app.use(express.static(path.join(__dirname, './client/static')));
-
+// app.use(express.static(path.join(__dirname, './client/static')));
 // load config
+
 app.set('configuration', config);
 
 app.use(function(req, res, next) {
