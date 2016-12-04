@@ -3,7 +3,6 @@
 
     "api_port"  : 4000,
     "api_host" : "http://127.0.0.1:4000",
-    "MEMCACHED" : "dev.luckstock.com:11211",
     "debug" : true,
     "username": "root",
     "password": "qwerty",
@@ -17,7 +16,6 @@
 
     "api_port"  : 4000,
     "api_host" : "//127.0.0.1:4000",
-    "MEMCACHED" : "localhost:11211",
     "debug" : true,
     "username": "audiostock",
     "password": "universtock-DB",
@@ -31,7 +29,6 @@
 
     "api_port"  : 4000,
     "api_host" : "//127.0.0.1:4000",
-    "MEMCACHED" : "dev.luckstock.com:11211",
     "debug" : false,
     "username": "root",
     "password": null,

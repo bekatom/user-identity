@@ -5,10 +5,9 @@ var LinkedInStrategy = require('passport-linkedin').Strategy;
 
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
-
 var debug = require('debug')('api');
-var models = require('../../models');
-var LSCrypt = require('../../helpers/crypt').LSCrypt;
+// var models = require('../../models');
+// var LSCrypt = require('../../helpers/crypt').LSCrypt;
 
 var ip = require('ip');
 

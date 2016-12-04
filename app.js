@@ -25,8 +25,8 @@ global.log = bunyan.createLogger({
 });
 
 // view engine setup
-app.set('views', path.join(__dirname, './views'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, './app/views'));
+app.use(express.static(path.join(__dirname, './app/public')));
 
 //app.set('view engine', 'swig');
 app.set('view engine', 'pug');
@@ -43,7 +43,7 @@ app.use(function(req, res, next) {
 // app.set('superSecret', "ThisislucstocksecretKeyforJWT");
 
 var passport = require("passport");
-require('./apps/users/passport')(passport); // pass passport for configuration
+require('./app/passport')(passport); // pass passport for configuration
 
 var session = require('express-session');
 var MemcachedStore = require('connect-memcached')(session);

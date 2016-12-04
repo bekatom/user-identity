@@ -12,28 +12,31 @@ module.exports = function (app) {
         app.use(response);
     });
 
+    // TODO for third party apps to include
+    // var apps = [
 
-    var apps = [
+    //      'categories',
+    //      'main',
+    //      'users',
+    //      'items',
+    //      'pages',
+    //      'memcached',
+    //      'withdraw',
+    //      'datahub',
+    //      'payout'
+    // ];
 
-         'categories',
-         'main',
-         'users',
-         'items',
-         'pages',
-         'memcached',
-         'withdraw',
-         'datahub',
-         'payout'
-    ];
+    // apps.forEach(function (application) {
 
-    apps.forEach(function (application) {
+    //     debug("Importing app : ", application);
+    //     app.map(require('./app/' + application + '/routes.js'));
+    //     //passport.map(require('./apps/' + application + '/routes.js'));
+    //     debug("Importing end app : ", application);
 
-        debug("Importing app : ", application);
-        app.map(require('./apps/' + application + '/routes.js'));
-        //passport.map(require('./apps/' + application + '/routes.js'));
-        debug("Importing end app : ", application);
+    // });
 
-    });
+    app.map(require('./app/routes.js'));
+
 
 
     // catch 404
