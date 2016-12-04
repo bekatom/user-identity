@@ -9,8 +9,8 @@ var jwt = require('jsonwebtoken');
 // var Memcached = require('../memcached');
 // var memCachedKeys = Memcached.memCachedKeys;
 
-var LSCrypt = require('../../helpers/crypt').LSCrypt;
-var util = require('../../helpers/util');
+// var LSCrypt = require('../../helpers/crypt').LSCrypt;
+// var util = require('../../helpers/util');
 
 const JWT_SECRET_KEY = "JWTluckstocksecretkey!!!$$$";
 
