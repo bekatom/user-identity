@@ -1,9 +1,7 @@
-// var models = require('../../models');
-
 var debug = require('debug')('api');
 var path = require('path');
-var Memcached = require('../memcached');
-var memCachedKeys = Memcached.memCachedKeys;
+// var Memcached = require('../memcached');
+// var memCachedKeys = Memcached.memCachedKeys;
 var async = require('asyncawait/async');
 var await = require('asyncawait/await');
 
