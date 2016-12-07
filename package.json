@@ -45,6 +45,7 @@
     "pug": "^2.0.0-alpha6",
     "request": "^2.69.0",
     "serve-favicon": "2.3.0",
+    "swagger": "^0.7.5",
     "winston": "^2.2.0"
   },
   "keywords": [
