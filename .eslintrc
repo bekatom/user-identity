@@ -1,0 +1,11 @@
+{
+    "rules": {
+        "no-param-reassign": 0,
+        "max-len": ["warn", 120],
+        "indent": ["warn", 4],
+        "new-cap": ["error", { "capIsNewExceptions": ["Immutable", "Server"] }],
+        "semi": [2, "never"], 
+        "no-underscore-dangle": 0,
+        "no-console": 0
+    }
+}
