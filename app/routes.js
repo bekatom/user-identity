@@ -1,7 +1,7 @@
-var UserController = require('./index').UserController;
-var UserViews = require('./index').UserViews;
-var isLoggedIn = require('./index').isLoggedIn;
-var isAuthenticated = require('./index').isAuthenticated;
+var UserController = require('./index').UserController
+var UserViews = require('./index').UserViews
+var isLoggedIn = require('./index').isLoggedIn
+var isAuthenticated = require('./index').isAuthenticated
 // var models = require('../../models');
 // var crudController  = require('../../core/crudController')(models.users);
 
@@ -10,6 +10,9 @@ var isAuthenticated = require('./index').isAuthenticated;
 module.exports = {
 
     //// VIEWS /////////////
+    '/' : {
+        get: UserViews.userLogin,
+    },
 
     '/login' : {
         get :  UserViews.userLogin,
@@ -59,8 +62,8 @@ module.exports = {
     },
     // ******   LINKEDIN AUTH
     '/auth/linkedin' : {
-       get: passport.authenticate('linkedin', { 
-           scope: ['r_basicprofile', 'r_emailaddress'] 
+        get: passport.authenticate('linkedin', { 
+            scope: ['r_basicprofile', 'r_emailaddress'] 
         })
     },
     '/auth/linkedin/callback' :{
@@ -72,7 +75,7 @@ module.exports = {
 
     // ******   GOOGLE
     '/auth/google' : {
-       get: passport.authenticate('google')
+        get: passport.authenticate('google')
     },
     '/auth/google/callback' :{
         get: passport.authenticate('google', {
@@ -142,4 +145,4 @@ module.exports = {
 
     }
 
-};
+}

@@ -1,9 +1,9 @@
-var LocalStrategy = require('passport-local').Strategy;
-var FacebookStrategy = require('passport-facebook').Strategy;
-var TwitterStrategy = require('passport-twitter').Strategy;
-var LinkedInStrategy = require('passport-linkedin').Strategy;
+//var LocalStrategy = require('passport-local').Strategy;
+// var FacebookStrategy = require('passport-facebook').Strategy;
+// var TwitterStrategy = require('passport-twitter').Strategy;
+// var LinkedInStrategy = require('passport-linkedin').Strategy;
 
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+//var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 var debug = require('debug')('api');
 
@@ -42,10 +42,10 @@ module.exports = function(passport){
 
     });
 
-    require('./strategies/facebook')(passport)
-    require('./strategies/twitter')(passport)
-    require('./strategies/linkedin')(passport)
-    require('./strategies/local')(passport)
+    require('./strategies/facebook')(passport, configAuth)
+    require('./strategies/twitter')(passport, configAuth)
+    require('./strategies/linkedin')(passport, configAuth)
+    require('./strategies/local')(passport, configAuth)
 
 
 };

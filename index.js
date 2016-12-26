@@ -1,16 +1,16 @@
 /**
  * Created by beka on 4/22/16.
  */
-var debug = require('debug')('api');
-var path = require('path');
+var debug = require('debug')('api')
+var path = require('path')
 
 
 module.exports = function (app) {
 
     //register responses
     require('./responses/index').forEach(function (response) {
-        app.use(response);
-    });
+        app.use(response)
+    })
 
     // TODO for third party apps to include
     // var apps = [
@@ -35,22 +35,22 @@ module.exports = function (app) {
 
     // });
 
-    app.map(require('./app/routes.js'));
+    app.map(require('./app/routes.js'))
 
 
 
     // catch 404
     app.use(function (req, res) {
 
-        res.notFound();
-    });
+        res.notFound()
+    })
 
     // catch 5xx
     app.use(function (err, req, res, next) {
-        console.log(err);
-        debug(err);
-        res.serverError();
-    });
+        console.log(err)
+        debug(err)
+        res.serverError()
+    })
 
 
-};
+}
