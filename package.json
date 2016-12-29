@@ -4,7 +4,7 @@
   "description": "User identity management",
   "main": "app.js",
   "scripts": {
-    "start": "DEBUG=api nodemon ./bin/www",
+    "start": "DEBUG=api NODE_ENV=development nodemon ./bin/www",
     "pm2_dev": "DEBUG=api pm2 start ./bin/www --name user_identity_dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
