@@ -24,6 +24,7 @@
     "connect-flash": "^0.1.1",
     "connect-memcached": "^0.2.0",
     "cors": "2.7.1",
+    "dotenv": "^2.0.0",
     "es6-promise": "^3.1.2",
     "express": "4.13.3",
     "express-session": "^1.14.0",
