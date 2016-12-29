@@ -1,7 +1,7 @@
 var debug = require('debug')('api');
 var express = require('express');
 var path = require('path');
-//var logger = require('morgan');
+// var logger = require('morgan');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var helmet = require('helmet');
@@ -12,7 +12,6 @@ var bunyan = require('bunyan');
 
 // development, production or staging
 require('dotenv').config({path: './config/.' +  process.env.NODE_ENV})
-
 
 var app = express();
 
@@ -28,19 +27,11 @@ global.log = bunyan.createLogger({
 app.set('views', path.join(__dirname, './app/views'));
 app.use(express.static(path.join(__dirname, './app/public')));
 
-//app.set('view engine', 'swig');
 app.set('view engine', 'pug');
-//app.locals.Sequelize = require("sequelize");
-// var memcached = new Memcached(config.MEMCACHED);
-app.use(function(req, res, next) {
-   // global.memcached = memcached;
-    next();
-});
 
-app.use(function (req, res, next) {
-    res.setHeader("X-Powered-By", "user identity");
-    next();
-});
+/// MONGOOSE
+var mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_DB);
 
 
 // ==============
@@ -51,17 +42,16 @@ var passport = require("passport");
 require('./app/passport')(passport); // pass passport for configuration
 
 var session = require('express-session');
-// var MemcachedStore = require('connect-memcached')(session);
+var mongoStore = require('connect-mongo')(session);
 
 app.use(session({
     secret: 'user_idnetity',
     name : 'user identity',
     resave : false,
     saveUninitialized : false,
-    // store : new MemcachedStore({
-    //     hosts : [config.MEMCACHED],
-    //     secret : 'iloveluckstock.com!@#$%^'
-    // }),
+    store: new mongoStore({
+        mongooseConnection: mongoose.connection
+    }),
     cookie: { secure: true }
     }
 ));
@@ -74,18 +64,16 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 app.use(compression());
 app.use(cors());
 app.use(helmet());
-//app.use(logger('dev'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
-// app.use(express.static(path.join(__dirname, './client/static')));
-// load config
 
 app.set('configuration', config);
 
 app.use(function(req, res, next) {
-    res.setHeader('X-Powered-By', 'luckstock');
+    res.setHeader('X-Powered-By', 'user identity');
     next();
 });
 
