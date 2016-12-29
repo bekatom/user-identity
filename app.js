@@ -1,19 +1,19 @@
+var debug = require('debug')('api');
 var express = require('express');
 var path = require('path');
 //var logger = require('morgan');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var helmet = require('helmet');
-// var Memcached = require('memcached');
 var compression = require('compression');
 var config = require('./config');
 var flash  = require('connect-flash');
+var bunyan = require('bunyan');
 
 // development, production or staging
 require('dotenv').config({path: './config/.' +  process.env.NODE_ENV})
 
-var debug = require('debug')('api');
-var bunyan = require('bunyan');
+
 var app = express();
 
 global.log = bunyan.createLogger({
@@ -51,7 +51,7 @@ var passport = require("passport");
 require('./app/passport')(passport); // pass passport for configuration
 
 var session = require('express-session');
-var MemcachedStore = require('connect-memcached')(session);
+// var MemcachedStore = require('connect-memcached')(session);
 
 app.use(session({
     secret: 'user_idnetity',
