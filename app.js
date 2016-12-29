@@ -37,6 +37,11 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.use(function (req, res, next) {
+    res.setHeader("X-Powered-By", "user identity");
+    next();
+});
+
 
 // ==============
 // Create passport instance && JWT
