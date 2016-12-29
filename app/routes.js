@@ -5,8 +5,6 @@ var isAuthenticated = require('./index').isAuthenticated
 // var models = require('../../models');
 // var crudController  = require('../../core/crudController')(models.users);
 
-
-
 module.exports = {
 
     //// VIEWS /////////////
@@ -106,42 +104,28 @@ module.exports = {
         '/ping': {
             all: [isAuthenticated, UserController.ping]
         },
-
         '/count':{
             get : UserController.count
         },
-
         '/featured' : {
             get : UserController.featured_authors
         },
-
         '/get/:id' : {
             get : UserController.get_by_id
         },
-
-        '/update/payout' :{
-            post : UserController.update_payout
-        },
-
         // CRUD
         '/list' : {
            // get : crudController.list
         },
-        
         '/create' : {
           //  post : crudController.create
         },
-
         '/delete' : {
            // delete : crudController.delete
         },
-
         '/read' : {
            // get : crudController.read
         }
-
-
-
 
     }
 
