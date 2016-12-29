@@ -1,26 +1,24 @@
 #!/usr/bin/env node
-
-
-var app = require('../app');
-var debug = require('debug')('app:server');
-var http = require('http');
+var app = require('../app')
+var debug = require('debug')('app:server')
+var http = require('http')
 // var models = require("../models");
-var configuration = app.get('configuration');
-var env = process.env.NODE_ENV || 'development';
+var configuration = app.get('configuration')
+var env = process.env.NODE_ENV || 'development'
 
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || configuration.api_port || '4000');
-app.set('port', port);
+var port = normalizePort(process.env.PORT || configuration.api_port || '4000')
+app.set('port', port)
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+var server = http.createServer(app)
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -30,10 +28,10 @@ var server = http.createServer(app);
 
 // models.sequelize.sync().then(function () {
 var server = app.listen(app.get('port'),'0.0.0.0', function() {
-    console.log("API Server listening on port " +  server.address().port);
-    console.log("MODE : " +  env);
-    debug('Express server listening on port ' + server.address().port);
-});
+    console.log("API Server listening on port " +  server.address().port)
+    console.log("MODE : " +  env)
+    debug('Express server listening on port ' + server.address().port)
+})
 // });
 
 // server.listen(port);
@@ -45,19 +43,19 @@ var server = app.listen(app.get('port'),'0.0.0.0', function() {
  */
 
 function normalizePort(val) {
-  var port = parseInt(val, 10);
+    var port = parseInt(val, 10)
 
-  if (isNaN(port)) {
+    if (isNaN(port)) {
     // named pipe
-    return val;
-  }
+        return val
+    }
 
-  if (port >= 0) {
+    if (port >= 0) {
     // port number
-    return port;
-  }
+        return port
+    }
 
-  return false;
+    return false
 }
 
 /**
@@ -65,27 +63,27 @@ function normalizePort(val) {
  */
 
 function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
+    if (error.syscall !== 'listen') {
+        throw error
+    }
 
-  var bind = typeof port === 'string'
+    var bind = typeof port === 'string'
     ? 'Pipe ' + port
-    : 'Port ' + port;
+    : 'Port ' + port
 
   // handle specific listen errors with friendly messages
-  switch (error.code) {
+    switch (error.code) {
     case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
-      process.exit(1);
-      break;
+        console.error(bind + ' requires elevated privileges')
+        process.exit(1)
+        break
     case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
-      process.exit(1);
-      break;
+        console.error(bind + ' is already in use')
+        process.exit(1)
+        break
     default:
-      throw error;
-  }
+        throw error
+    }
 }
 
 /**
@@ -93,10 +91,10 @@ function onError(error) {
  */
 
 function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
+    var addr = server.address()
+    var bind = typeof addr === 'string'
     ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  console.log("Sever listening on port " + addr.port);
-  debug('Listening on ' + bind);
+    : 'port ' + addr.port
+    console.log("Sever listening on port " + addr.port)
+    debug('Listening on ' + bind)
 }

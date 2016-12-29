@@ -11,7 +11,7 @@ module.exports = {
 
     //// VIEWS /////////////
     '/' : {
-        get: UserViews.userLogin,
+        get: UserViews.home,
     },
 
     '/login' : {

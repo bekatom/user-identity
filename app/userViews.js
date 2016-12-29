@@ -6,6 +6,13 @@ var async = require('asyncawait/async');
 var await = require('asyncawait/await');
 
 
+
+function home(req, res) {
+    res.render(`${__dirname}/views/login`,{
+        
+    });
+}
+
 function userLogin(req, res) {
 
     res.render(`${__dirname}/views/login`,{
@@ -62,6 +69,7 @@ function generateToken(req,res){
 }
 
 module.exports = {
+    home: home,
     userProfile : userProfile,
     generateToken : generateToken,
     userLogin: userLogin,
