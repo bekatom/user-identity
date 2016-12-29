@@ -1,6 +1,4 @@
 var express = require('express');
-
-
 var path = require('path');
 //var logger = require('morgan');
 var bodyParser = require('body-parser');
@@ -11,6 +9,8 @@ var compression = require('compression');
 var config = require('./config');
 var flash  = require('connect-flash');
 
+// development, production or staging
+require('dotenv').config({path: './config/.' +  process.env.NODE_ENV})
 
 var debug = require('debug')('api');
 var bunyan = require('bunyan');
