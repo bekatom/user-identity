@@ -8,7 +8,8 @@ var await = require('asyncawait/await');
 
 
 function home(req, res) {
-    res.render(`${__dirname}/views/login`,{
+
+    res.render(`${__dirname}/views/index`,{
         
     });
 }

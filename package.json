@@ -4,7 +4,7 @@
   "description": "User identity management",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "DEBUG=api nodemon ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
