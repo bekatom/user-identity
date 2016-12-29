@@ -1,0 +1,5 @@
+mixin displayValidation(messages)
+    - if(messages.length > 0)
+        each message  in messages
+            div#message
+                h3(style="color:red")= message
