@@ -7,7 +7,6 @@ var isAuthenticated = require('./index').isAuthenticated
 
 module.exports = {
 
-    //// VIEWS /////////////
     '/' : {
         get: UserViews.home,
     },
