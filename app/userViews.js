@@ -6,12 +6,11 @@ var async = require('asyncawait/async');
 var await = require('asyncawait/await');
 
 
-function home(req, res) {
+var homePage = (req, res) => res.render(`${__dirname}/views/index`,{});
+var apiPage = (req,res) => res.render(`${__dirname}/views/api`,{});
 
-    res.render(`${__dirname}/views/index`,{
-        
-    });
-}
+
+
 
 function userLogin(req, res) {
 
@@ -69,7 +68,8 @@ function generateToken(req,res){
 }
 
 module.exports = {
-    home: home,
+    apiPage: apiPage,
+    homePage: homePage,
     userProfile : userProfile,
     generateToken : generateToken,
     userLogin: userLogin,
