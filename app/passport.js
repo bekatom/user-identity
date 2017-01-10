@@ -32,17 +32,6 @@ module.exports = function(passport){
             // log.error(err); // log error
             done(err, user);
         });
-    //    models.users.findOne({
-    //        where : {
-    //            user_id : user_id
-    //        },
-    //        raw : true
-    //    }).then(user=>{
-
-    //        //debug("after deserilize : ", user);
-    //        done(null, user);
-    //    });
-
     });
 
     require('./strategies/facebook')(passport, configAuth)
