@@ -1,15 +1,9 @@
 var debug = require('debug')('api');
 var LocalStrategy = require('passport-local').Strategy;
 
-// var models = require('../../../models');
-// var LSCrypt = require('../../../helpers/crypt').LSCrypt;
-
 var ip = require('ip');
-
-var async = require('asyncawait/async');
-var await = require('asyncawait/await');
 var User = require('../models/users')
-// var validators = require('../validators');
+
 
 module.exports = (passport) => {
 
@@ -21,14 +15,34 @@ module.exports = (passport) => {
         passwordField : 'password',
         passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
     },(req,email,password,done)=>{
-
-
-        // sanam nebismieri sxva rame moxda mtavar tredshi es sheasrule
         process.nextTick(()=>{
+           
+            process.nextTick(function () {
+                User.findOne({
+                    'local.email': email
+                }, function (err, user) {
+                    // log.error(err, req); // log error
+                    // if there are any errors, return the error
+                    if (err) {
+                        return done(err);
+                    }
 
-             // STARTED TO AUTNETICATED WITH PASSPORT FOR SEQULIZER/MYSQL
+                    // if no user is found, return the message
+                    if (!user) {
+                        return done(null, false, req.flash('errors', 'No user found.'));
+                    }
 
-             
+                    if (!user.validPassword(password)) {
+                        return done(null, false, req.flash('errors', 'Oops! Wrong password.'));
+                    }
+
+                    // all is well, return user
+                    else {
+                        return done(null, user);
+                    }
+                });
+            });
+
         });
     }));
 
@@ -42,8 +56,6 @@ module.exports = (passport) => {
 
         process.nextTick(()=>{
 
-            // == Send Email =====
-            // ===================
             User.findOne({
                 $or: [ 
                     { 'local.email': email},
