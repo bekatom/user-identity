@@ -1,3 +1,6 @@
+// development , production, testing
+process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+
 var debug = require('debug')('api');
 var express = require('express');
 var path = require('path');
