@@ -10,7 +10,7 @@ var userSchema = mongoose.Schema({
     avatar: String,
     defaultLanguage: String,
     timeZone: String,
-
+    email: String,
     local: {
         email: {
             type: String,
@@ -33,7 +33,19 @@ var userSchema = mongoose.Schema({
         displayName: String,
         username: String
     },
+    linkedin: {
+        id: String,
+        token: String,
+        displayName: String,
+        username: String
+    },
     google: {
+        id: String,
+        token: String,
+        email: String,
+        name: String
+    },
+    github: {
         id: String,
         token: String,
         email: String,

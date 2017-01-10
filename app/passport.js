@@ -14,7 +14,7 @@ var ip = require('ip');
 
 var async = require('asyncawait/async');
 var await = require('asyncawait/await');
-
+var User = require('./models/users');
 // var validators = require('./validators');
 
 module.exports = function(passport){
@@ -27,8 +27,11 @@ module.exports = function(passport){
         done(null, user.id);
     });
 
-    passport.deserializeUser((user_id,done)=>{
-
+    passport.deserializeUser((id, done)=>{
+        User.findById(id, function (err, user) {
+            // log.error(err); // log error
+            done(err, user);
+        });
     //    models.users.findOne({
     //        where : {
     //            user_id : user_id
