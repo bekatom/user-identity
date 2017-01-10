@@ -50,12 +50,11 @@ var mongoStore = require('connect-mongo')(session);
 app.use(session({
     secret: 'user_idnetity',
     name : 'user identity',
+    saveUninitialized : true,
     resave : false,
-    saveUninitialized : false,
     store: new mongoStore({
         mongooseConnection: mongoose.connection
     }),
-    cookie: { secure: true }
     }
 ));
 app.use(passport.initialize());

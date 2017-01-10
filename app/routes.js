@@ -21,7 +21,7 @@ module.exports = {
         })
     },
     '/signup' : {
-        get : UserViews.userSignup,
+        get : UserViews.userSignUp,
         post : passport.authenticate('local-signup',{
             successRedirect: '/profile/', // redirect to the secure profile section
             failureRedirect: '/signup', // redirect back to the signup page if there is an error
@@ -32,7 +32,6 @@ module.exports = {
     '/authenticate' : {
       //  post : UserController.user_authenticate,
       //  get : UserViews.userLogin
-
     },
 
     '/logout' : {
