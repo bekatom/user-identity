@@ -1,6 +1,7 @@
 // var UserController = require('./index').UserController
-var UserViews = require('./index').UserViews
-var isLoggedIn = require('./index').isLoggedIn
+var UserViews = require('./userViews')
+// var isLoggedIn = require('./index').isLoggedIn
+var isLoggedIn = require('./userViews').isLoggedIn
 // var isAuthenticated = require('./index').isAuthenticated
 // var models = require('../../models');
 // var crudController  = require('../../core/crudController')(models.users);
@@ -40,6 +41,7 @@ module.exports = {
 
     '/profile' : {
         get : [isLoggedIn, UserViews.userProfile]
+       // get : [UserViews.userProfile]
     },
 
     /////// ....... SOCIAL AUTH ROUTES .. ////////////////

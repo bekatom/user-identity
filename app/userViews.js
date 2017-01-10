@@ -1,15 +1,13 @@
 var debug = require('debug')('api');
 var path = require('path');
-// var Memcached = require('../memcached');
+
 // var memCachedKeys = Memcached.memCachedKeys;
-var async = require('asyncawait/async');
-var await = require('asyncawait/await');
+// var async = require('asyncawait/async');
+// var await = require('asyncawait/await');
 
 
 var homePage = (req, res) => res.render(`${__dirname}/views/index`,{});
 var apiPage = (req,res) => res.render(`${__dirname}/views/api`,{});
-
-
 
 
 function userLogin(req, res) {
@@ -44,10 +42,11 @@ function userLogout(req,res){
 
 // Check it if user is logged in
 function isLoggedIn(req,res,next){
-    if (req.isAuthenticated())
+    if (req.isAuthenticated()) {
         return next();
-
-    res.redirect('/login')
+    } else {
+        res.redirect('/login')
+    }
 }
 
 function userProfile(req,res){
@@ -68,14 +67,13 @@ function generateToken(req,res){
 }
 
 module.exports = {
-    apiPage: apiPage,
-    homePage: homePage,
-    userProfile : userProfile,
-    generateToken : generateToken,
-    userLogin: userLogin,
-    userLogout : userLogout,
-    userLoginPost : userLoginPost,
-    userSignup : userSignUp,
-    isLoggedIn : isLoggedIn
-    
+    apiPage,
+    homePage,
+    userProfile,
+    generateToken,
+    userLogin,
+    userLogout,
+    userLoginPost,
+    userSignUp,
+    isLoggedIn
 };

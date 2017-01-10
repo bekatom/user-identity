@@ -80,7 +80,7 @@ module.exports = (passport) => {
                          if (err) {
                              throw(err)
                          }
-                         return done(null, user)   
+                         return done(null, newUser)   
 
                      })
                 }
