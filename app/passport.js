@@ -1,29 +1,15 @@
-//var LocalStrategy = require('passport-local').Strategy;
-// var FacebookStrategy = require('passport-facebook').Strategy;
-// var TwitterStrategy = require('passport-twitter').Strategy;
-// var LinkedInStrategy = require('passport-linkedin').Strategy;
-
-//var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-
 var debug = require('debug')('api');
-
-// var models = require('../../models');
-// var LSCrypt = require('../../helpers/crypt').LSCrypt;
 
 var ip = require('ip');
 
-// var async = require('asyncawait/async');
-// var await = require('asyncawait/await');
 var User = require('./models/users');
-// var validators = require('./validators');
 
 module.exports = function(passport){
 
     // configs for authentications
     var configAuth = require('./auth');
 
-    passport.serializeUser((user,done)=>{
-        debug("serializeUser User ", user);
+    passport.serializeUser((user, done)=>{
         done(null, user.id);
     });
 
