@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var helmet = require('helmet');
 var compression = require('compression');
-var config = require('./config');
+// var config = require('./config');
 var flash  = require('connect-flash');
 var bunyan = require('bunyan');
 
@@ -73,7 +73,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-app.set('configuration', config);
+// app.set('configuration', config);
 
 app.use(function(req, res, next) {
     res.setHeader('X-Powered-By', 'user identity');

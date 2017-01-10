@@ -1,10 +1,11 @@
 #!/usr/bin/env node
+process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 var app = require('../app')
 var debug = require('debug')('app:server')
 var http = require('http')
 // var models = require("../models");
 var configuration = app.get('configuration')
-var env = process.env.NODE_ENV || 'development'
+
 
 
 /**
@@ -29,7 +30,7 @@ var server = http.createServer(app)
 // models.sequelize.sync().then(function () {
 var server = app.listen(app.get('port'),'0.0.0.0', function() {
     console.log("API Server listening on port " +  server.address().port)
-    console.log("MODE : " +  env)
+    console.log("MODE : " +  process.env.NODE_ENV)
     debug('Express server listening on port ' + server.address().port)
 })
 // });

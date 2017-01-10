@@ -1,7 +1,7 @@
-var UserController = require('./index').UserController
+// var UserController = require('./index').UserController
 var UserViews = require('./index').UserViews
 var isLoggedIn = require('./index').isLoggedIn
-var isAuthenticated = require('./index').isAuthenticated
+// var isAuthenticated = require('./index').isAuthenticated
 // var models = require('../../models');
 // var crudController  = require('../../core/crudController')(models.users);
 
@@ -29,8 +29,8 @@ module.exports = {
     },
      // authenticate with JWT POST method
     '/authenticate' : {
-        post : UserController.user_authenticate,
-        get : UserViews.userLogin
+      //  post : UserController.user_authenticate,
+      //  get : UserViews.userLogin
 
     },
 
@@ -101,16 +101,16 @@ module.exports = {
 
     '/v1/users': {
         '/ping': {
-            all: [isAuthenticated, UserController.ping]
+           // all: [isAuthenticated, UserController.ping]
         },
         '/count':{
-            get : UserController.count
+          //  get : UserController.count
         },
         '/featured' : {
-            get : UserController.featured_authors
+           // get : UserController.featured_authors
         },
         '/get/:id' : {
-            get : UserController.get_by_id
+          //  get : UserController.get_by_id
         },
         // CRUD
         '/list' : {

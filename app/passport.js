@@ -12,8 +12,8 @@ var debug = require('debug')('api');
 
 var ip = require('ip');
 
-var async = require('asyncawait/async');
-var await = require('asyncawait/await');
+// var async = require('asyncawait/async');
+// var await = require('asyncawait/await');
 var User = require('./models/users');
 // var validators = require('./validators');
 
