@@ -15,6 +15,7 @@
   "dependencies": {
     "async": "^2.0.0-rc.2",
     "asyncawait": "^1.0.3",
+    "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.4.0",
     "body-parser": "1.14.1",
     "bunyan": "^1.8.1",
