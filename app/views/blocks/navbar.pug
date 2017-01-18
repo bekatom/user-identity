@@ -12,8 +12,12 @@ nav.navbar.navbar-default.navbar-fixed-top
             li.active
               a(href='/') Home
             li
-              a(href='/login') Login
+              if (!locals.user)
+                 a(href='/login') Login
+              else
+                 a(href='/logout') Logout   
             li
-              a(href='/signup') Signup 
+              if (!locals.user)
+                a(href='/signup') Signup 
             li
               a(href='/api') API 
