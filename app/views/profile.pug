@@ -1,13 +1,9 @@
-style.
-    .profile {
-        width: 50%;
-        margin: 0 auto;
-    }    
-
-
-div.profile
-    h3 This is user profile page
-        div
-             h2 user: #{user}
-        div
-            a(href="/logout") Logout
+extends ./layout.pug
+ 
+block content
+  h3 This is user profile page
+    div
+     h2 user: #{user.local.email}
+     h3 user: #{user._id}
+     div
+        a(href="/logout") Logout
