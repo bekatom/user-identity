@@ -1,3 +1,0 @@
-
-PORT=4000
-MONGO_DB = 'mongodb://localhost:27017/user_identity'
