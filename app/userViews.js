@@ -1,11 +1,6 @@
 var debug = require('debug')('api');
 var path = require('path');
 
-// var memCachedKeys = Memcached.memCachedKeys;
-// var async = require('asyncawait/async');
-// var await = require('asyncawait/await');
-
-
 var homePage = (req, res) => res.render(`${__dirname}/views/index`,{});
 var apiPage = (req,res) => res.render(`${__dirname}/views/api`,{});
 

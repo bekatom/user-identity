@@ -1,4 +1,4 @@
-## Usable user authentication application supports , 
+### It should to be meet the following requirements 
 
 * JWT
 * Local login
