@@ -1,8 +1,17 @@
 var debug = require('debug')('api');
 var path = require('path');
 
-var homePage = (req, res) => res.render(`${__dirname}/views/index`,{});
-var apiPage = (req,res) => res.render(`${__dirname}/views/api`,{});
+var homePage = (req, res) => { 
+    res.render(`${__dirname}/views/index`,{
+        user: req.user
+    }) 
+};
+
+var apiPage = (req,res) => { 
+    res.render(`${__dirname}/views/api`,{
+        user: req.user
+    }) 
+};
 
 
 function userLogin(req, res) {
