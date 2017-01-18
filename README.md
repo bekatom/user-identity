@@ -1,4 +1,4 @@
-### It should to be meet the following requirements 
+### It must meet following requirements 
 
 * JWT
 * Local login
